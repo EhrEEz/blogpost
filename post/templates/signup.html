@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+  {% block content %}
+<br />
+<br />
+<br />
+<br />
+<br  />
+<div class="container h-100 align-items-center" >
+  <div class="row align-items-center">
+    <div class="col" >
+      <div class="card rounded-pill shadow p-5 mb-8 border-0 text-white" style="width: 35rem; margin: 0 auto; background-color: #003355; foreground-color: #FFFFFF;">
+        <div class="card-body text-center">
+          <h4 class="card-title text-center display-4">Register</h4>
+          <br />
+              <form action='' method="POST">
+                  {% csrf_token %}
+                  {% bootstrap_form form %}
+                  <button type="submit" class="btn btn-outline-success rounded-pill" value="Sign Up">Sign Up</button>
+              </form>
+        </div>
+      </div>
+      </div>
+    </div>
+
+</div>
+
+
+    {% endblock %}

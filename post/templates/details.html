@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+  <br />
+  <br />
+  <div class="card" style="width: 70rem; margin: 0 auto;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h1 class="display-1">{{object.title}}</h1>
+      <p class="lead">{{object.description}}</p>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item text-right">{{object.creator}}</li>
+    </ul>
+      <a class="btn btn-primary mt-3" href="#" role="button">Edit</a>
+    </div>
+  </div>
+    {% endblock %}

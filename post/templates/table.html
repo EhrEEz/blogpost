@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+<br />
+<table class="table">
+  <thead class="thead-dark">
+     <tr>
+       <th scope="col">Title</th>
+       <th scope="col">Creator</th>
+       <th scope="col">Publish</th>
+       <th scope="col">Created Date</th>
+       <th scope="col">Modified Date</th>
+     </tr>
+  </thead>
+  <tbody>
+    {% for obj in object_list %}
+      <tr>
+        <td><a href="{% url 'detail' obj.pk %}">{{obj.title}}</a></td>
+        <td>{{obj.creator}}</td>
+        <td>{{obj.is_published}}</td>
+        <td>{{obj.published_date}}</td>
+        <td>{{obj.modified_date}}</td>
+      </tr>
+    {%endfor%}
+  </tbody>
+  </table>
+
+    {% endblock %}

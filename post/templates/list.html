@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+  {% if not user.is_authenticated %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Login!</h1>
+      <p class="lead">Make your first Post!</p>
+      <hr class="my-4" />
+      <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+    </div>
+  </div>
+  {% endif %}
+  <br />
+  <br />
+  {% for obj in object_list %}
+  <div class="card" style="width: 70rem; margin: 0 auto;">
+    {% if obj.img %}<img src="{{obj.image}}" class="card-img-top" alt="...">
+    {% else %}
+    <img src="./resources/images/ares" >
+  {% endif %}
+    <div class="card-body">
+        <h5 class="card-title display-5"><a href="{% url 'detail' obj.pk %}" class="text-decoration-none">{{obj.title}}</a></h5>
+        <p class="card-text ">{{obj.description}}</p>
+        <p class="card-text text-right"><small class="text-muted">Published on: {{obj.created_date}}</small></p>
+        {% if modified_date != created_date %}<p class="card-text"><small class="text-muted">Edited on: {{obj.modified_date}}</small></p>{% endif %}
+      </div>
+  </div>
+  <br />
+    {% endfor %}
+    {% endblock %}
