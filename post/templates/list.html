@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
-  {% block content %}
+{% block jumbotron %}
+
   {% if not user.is_authenticated %}
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron">
     <div class="container">
       <h1 class="display-4">Login!</h1>
       <p class="lead">Make your first Post!</p>
@@ -10,14 +11,16 @@
       <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
     </div>
   </div>
-  {% endif %}
+    {% endif %}
+  {% endblock jumbotron %}
+  {% block content %}
+
+
   <br />
   <br />
   {% for obj in object_list %}
   <div class="card" style="width: 70rem; margin: 0 auto;">
     {% if obj.img %}<img src="{{obj.image}}" class="card-img-top" alt="...">
-    {% else %}
-    <img src="./resources/images/ares" >
   {% endif %}
     <div class="card-body">
         <h5 class="card-title display-5"><a href="{% url 'detail' obj.pk %}" class="text-decoration-none">{{obj.title}}</a></h5>
@@ -28,4 +31,4 @@
   </div>
   <br />
     {% endfor %}
-    {% endblock %}
+    {% endblock content %}

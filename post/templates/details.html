@@ -4,14 +4,20 @@
   <br />
   <br />
   <div class="card" style="width: 70rem; margin: 0 auto;">
-    <img src="..." class="card-img-top" alt="...">
+    {% if obj.img %}<img src="{{obj.image}}" class="card-img-top" alt="...">
+  {% endif %}
     <div class="card-body">
-        <h1 class="display-1">{{object.title}}</h1>
+        <h1 class="display-4">{{object.title}}</h1>
       <p class="lead">{{object.description}}</p>
       <ul class="list-group list-group-flush">
-      <li class="list-group-item text-right">{{object.creator}}</li>
+      <li class="list-group-item text-right">{{object.creator}}<br /><small class="text-muted">Published on: {{object.created_date}}</small></li>
+      <li class="list-group-item text-right">
+
+        </li>
     </ul>
-      <a class="btn btn-primary mt-3" href="#" role="button">Edit</a>
+
     </div>
+
   </div>
+<a class="btn btn-outline-primary mt-3 mb-1 btn-block " href="#" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
     {% endblock %}
