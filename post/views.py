@@ -3,8 +3,8 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from .forms import RegistrationForm
 
 from django.views.generic import (
     TemplateView,
@@ -40,15 +40,13 @@ class BlogListView(ListView):
 class CreatePost(CreateView):
     template_name = "post_edit.html"
     model = Post
-    fields = (
-        "title",
-        "description",
-        "creator",
-        "image",
-        "total_comments",
-        "type",
-        "is_published",
-    )
+    fields = ("title", "description", "image", "total_comments", "type", "is_published")
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.creator = self.request.user
+        obj.save()
+        return super().form_valid(form)
 
     def get_success_url(self):
         messages.success(self.request, f"{self.object.title} has been created.")
@@ -63,12 +61,12 @@ class PostDetail(DetailView):
 class UserDetail(TemplateView):
     template_name = "user_details.html"
 
-    # def get_context_data(self, kwargs):
-    #     context =
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
 
 
 class SignUpView(CreateView):
-    form_class = RegistrationForm
+    form_class = UserCreationForm
     model = User
     template_name = "signup.html"
 

@@ -8,20 +8,13 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = (
-            "title",
-            "creator",
-            "description",
-            "image",
-            "total_comments",
-            "is_published",
-        )
+        fields = ("title", "description", "image", "total_comments", "is_published")
 
 
-class RegistrationForm(UserCreationForm):
-    class meta:
-
-        fields = ("username", "password1", "password2")
+# class RegistrationForm(UserCreationForm):
+#     class meta:
+#
+#         fields = ("username", "password1", "password2")
 
 
 #

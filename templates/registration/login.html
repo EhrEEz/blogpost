@@ -14,13 +14,18 @@
             <div class="form-group">
             {% csrf_token %}
             {% bootstrap_form form %}
-              <a href="{% url 'password_reset' %}" class="btn btn-link d-block">Reset Password</a>
+              <a href="{% url 'password_reset' %}" class="btn btn-default d-block text-info">Forgot Password </a>
+              <div>
+              New Here ?
+              <a href="{% url 'signup' %}" class="btn btn-default navbar-btn text-info"><h6 class="display-6 text-info ">Register</h6></a>
+                </div>
               <div class="pt-2">
             <button type="submit" class="btn btn-outline-success rounded-pill" value="Login">Login</button>
               </div>
 
             </div>
           </form>
+
         </div>
       </div>
       </div>

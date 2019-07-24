@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-{% block title %}Register{% endblock %}
+{% block title %}Signup{% endblock %}
   {% block content %}
 <br />
 <br />
@@ -12,12 +12,12 @@
     <div class="col" >
       <div class="card rounded-pill shadow p-5 mb-8 border-0 text-white" style="width: 35rem; margin: 0 auto; background-color: #003355; foreground-color: #FFFFFF;">
         <div class="card-body text-center">
-          <h4 class="card-title text-center display-4">Register</h4>
+          <h4 class="card-title text-center display-4">Signup</h4>
           <br />
               <form action='' method="POST">
                   {% csrf_token %}
                   {% bootstrap_form form show_help=False %}
-                  <button type="submit" class="btn btn-outline-success rounded-pill" value="Sign Up">Sign Up</button>
+                  <button type="submit" class="btn btn-outline-success rounded-pill mt-3" value="Sign Up">Sign Up</button>
               </form>
         </div>
       </div>
