@@ -1,2 +1,4 @@
-./venv/
-./functions/
+venv/
+functions/
+__pycache__/
+*.pyc

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from .forms import RegistrationForm
 
 from django.views.generic import (
     TemplateView,
@@ -17,6 +18,8 @@ from django.http import HttpResponseRedirect
 
 # from .forms import PostForm
 from .models import Post
+
+# from .forms import RegistrationForm
 
 
 class TableView(ListView):
@@ -57,14 +60,23 @@ class PostDetail(DetailView):
     template_name = "details.html"
 
 
-# class SignUpView(CreateView):
-#     form_class = RegistrationForm
-#     model = User
-#     template_name = "signup.html"
-#
-#     def get_success_url(self):
-#         messages.success(self.request, "User has been created.")
-#         return reverse("list")
+class UserDetail(TemplateView):
+    template_name = "user_details.html"
+
+    # def get_context_data(self, kwargs):
+    #     context =
+
+
+class SignUpView(CreateView):
+    form_class = RegistrationForm
+    model = User
+    template_name = "signup.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "User has been created.")
+        return reverse("list")
+
+
 #
 #
 # class LoginView(FormView):
@@ -104,13 +116,13 @@ class PostDetail(DetailView):
 #     model = Post
 
 
-class LoginView(TemplateView):
-    template_name = "list.html"
+# class LoginView(TemplateView):
+#     template_name = "list.html"
+#
+#
+# class LogOutView(TemplateView):
+#     template_name = "list.html"
 
 
-class LogOutView(TemplateView):
-    template_name = "list.html"
-
-
-class SignUpView(TemplateView):
-    template_name = "list.html"
+# class SignUpView(TemplateView):
+#     template_name = "list.html"

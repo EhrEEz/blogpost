@@ -18,20 +18,12 @@ class PostForm(forms.ModelForm):
         )
 
 
-# class RegistrationForm(UserCreationForm):
-#     def __init__(self, *args, **kwargs):
-#         super(RegistrationForm, self).__init__(*args, **kwargs)
-#
-#         self.helper = FormHelper()
-#         self.helper.layout = Layout(
-#             "username",
-#             "password1",
-#             "password2",
-#             ButtonHolder(Submit("register", "Register", css_class="btn-primary")),
-#         )
-#         for fieldname in ["username", "password1", "password2"]:
-#             self.fields[fieldname].help_text = None
-#
+class RegistrationForm(UserCreationForm):
+    class meta:
+
+        fields = ("username", "password1", "password2")
+
+
 #
 # class LoginForm(AuthenticationForm):
 #     def __init__(self, *args, **kwargs):

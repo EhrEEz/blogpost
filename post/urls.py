@@ -8,8 +8,7 @@ from .views import (
     TableView,
     PostDetail,
     SignUpView,
-    LoginView,
-    LogOutView,
+    UserDetail,
 )
 from . import views
 
@@ -22,7 +21,6 @@ urlpatterns = [
     path("new/", CreatePost.as_view(), name="post_new"),
     path("blog/<int:pk>/", PostDetail.as_view(), name="detail"),
     # path("<int:pk>/edit/", views.post_edit, name="post_edit"),
-    path("login/", LoginView.as_view(), name="login"),
-    path("logout/", LogOutView.as_view(), name="logout"),
-    path("register/", SignUpView.as_view(), name="signup"),
+    path("signup/", SignUpView.as_view(), name="signup"),
+    path("user/userprofile/", UserDetail.as_view(), name="user_details"),
 ]
