@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from django.views.generic import (
@@ -37,7 +38,7 @@ class BlogListView(ListView):
     model = Post
 
 
-class CreatePost(CreateView):
+class CreatePost(LoginRequiredMixin, CreateView):
     template_name = "post_edit.html"
     model = Post
     fields = ("title", "description", "image", "total_comments", "type", "is_published")

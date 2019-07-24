@@ -15,7 +15,7 @@
             {% csrf_token %}
             {% bootstrap_form form %}
               <a href="{% url 'password_reset' %}" class="btn btn-default d-block text-info">Forgot Password </a>
-              <div>
+              <div class="d-inline">
               New Here ?
               <a href="{% url 'signup' %}" class="btn btn-default navbar-btn text-info"><h6 class="display-6 text-info ">Register</h6></a>
                 </div>
