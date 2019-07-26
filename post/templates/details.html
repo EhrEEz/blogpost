@@ -19,5 +19,7 @@
     </div>
 
   </div>
-<a class="btn btn-outline-primary mt-3 mb-1 btn-block " href="#" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
+  {% if user == object.creator %}
+<a class="btn btn-outline-primary mt-3 mb-1 btn-block " href="{% url 'post_edit' object.pk %}" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
+{% endif %}
     {% endblock %}
