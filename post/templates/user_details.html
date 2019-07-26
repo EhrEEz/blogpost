@@ -12,7 +12,7 @@
     <div class="wrapper">
 
     {% for obj in object_list %}
-      {% if obj.creator = user %}
+      {% if obj.creator == user %}
         <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
             <div class="cd-hd">
               <h5>{{obj.title}}</h5>
