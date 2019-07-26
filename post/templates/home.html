@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home{% endblock title %}
+{% block content %}
+<div class="carousel-item">
+  <img src="post\images\62aac4e16c68dff44183e2cbdd8be2c75b66646051b66321f08392f7c3d156c0.jpg" alt="...">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Home</h5>
+    <p>Welcome</p>
+  </div>
+</div>
+
+{% endblock content %}
+{% block jumbotron %}
+
+{% if not user.is_authenticated %}
+<div class="jumbotron text-white" id="jumbo">
+  <div class="container">
+    <h1 class="display-4">Login!</h1>
+    <p class="lead">Make your first Post!</p>
+    <hr class="my-4" id="line_jumbo" />
+    <a class="btn btn-primary" href="{% url 'login' %}" role="button" id="button">Login</a>
+  </div>
+</div>
+{% endif %}
+{% endblock jumbotron %}

@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
+
 from django.urls import reverse
+
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.core.exceptions import PermissionDenied
 
 from django.views.generic import (
     TemplateView,
@@ -13,14 +16,18 @@ from django.views.generic import (
     DetailView,
     FormView,
     RedirectView,
+    UpdateView,
 )
 from django.views.generic.edit import CreateView
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 
 # from .forms import PostForm
 from .models import Post
 
 # from .forms import RegistrationForm
+class HomePageView(TemplateView):
+    template_name = "home.html"
+    model = Post
 
 
 class TableView(ListView):
@@ -39,7 +46,7 @@ class BlogListView(ListView):
 
 
 class CreatePost(LoginRequiredMixin, CreateView):
-    template_name = "post_edit.html"
+    template_name = "post_new.html"
     model = Post
     fields = ("title", "description", "image", "total_comments", "type", "is_published")
 
@@ -62,9 +69,6 @@ class PostDetail(DetailView):
 class UserDetail(TemplateView):
     template_name = "user_details.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -76,52 +80,17 @@ class SignUpView(CreateView):
         return reverse("list")
 
 
-#
-#
-# class LoginView(FormView):
-#     form_class = LoginForm
-#     template_name = "login.html"
-#     # success_url = "/"
-#
-#     def form_valid(self, form):
-#         username = form.cleaned_data["username"]
-#         password = form.cleaned_data["password"]
-#         user = authenticate(username=username, password=password)
-#
-#         if user is not None and user.is_active:
-#             login(self.request, user)
-#             return super(LoginView, self).form_valid(form)
-#
-#         else:
-#             return self.form_invalid(form)
-#
-#     def get_success_url(self):
-#         messages.success(self.request, f"{username} has been logged in.")
-#         return self.reverse("list")
-#
-#
-# class LogOutView(RedirectView):
-#
-#     permanent = False
-#     query_string = True
-#
-#     def get_redirect_url(self):
-#         logout(self.request)
-#         return reverse("list")
+class EditPost(LoginRequiredMixin, UpdateView):
+    model = Post
+    template_name = "post_edit.html"
+    fields = ("title", "description", "is_published")
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset=None)
+        if self.request.user != obj.creator:
+            raise PermissionDenied
+        return obj
 
-# class DeletePost(DeleteView):
-#     template_name = "deletepost.html"
-#     model = Post
-
-
-# class LoginView(TemplateView):
-#     template_name = "list.html"
-#
-#
-# class LogOutView(TemplateView):
-#     template_name = "list.html"
-
-
-# class SignUpView(TemplateView):
-#     template_name = "list.html"
+    def get_success_url(self):
+        messages.success(self.request, f"{self.object.title} has been created.")
+        return reverse("detail", args=(self.object.pk,))

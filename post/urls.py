@@ -9,18 +9,21 @@ from .views import (
     PostDetail,
     SignUpView,
     UserDetail,
+    HomePageView,
+    EditPost,
 )
 from . import views
 
 
 urlpatterns = [
-    path("", BlogListView.as_view(), name="list"),
+    path("blogs/", BlogListView.as_view(), name="list"),
+    path("", HomePageView.as_view(), name="home"),
     path("table/", TableView.as_view(), name="table"),
     path("post/", BlogListView.as_view(), name="list"),
     # path("create/", CreatePost.as_view(), name="create"),
     path("post/new/", CreatePost.as_view(), name="post_new"),
     path("post/<int:pk>/", PostDetail.as_view(), name="detail"),
-    # path("<int:pk>/edit/", views.post_edit, name="post_edit"),
+    path("post/<int:pk>/edit/", EditPost.as_view(), name="post_edit"),
     path("signup/", SignUpView.as_view(), name="signup"),
     path("user/userprofile/", UserDetail.as_view(), name="user_details"),
 ]

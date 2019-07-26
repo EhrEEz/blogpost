@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}{{object.title}} Details{% endblock %}
+{% block title %}{{user}} Profile{% endblock %}
   {% block content %}
   <span class="text-center bg-dark">
-    <h3 class="text-white">User Details</h3>
+    <h3 class="text-white">User Profile</h3>
   </span>
-  <div class="container">
   <p>
      {{username}}
     </p>
-    </div>
     {% endblock %}

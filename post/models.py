@@ -1,11 +1,13 @@
 from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+import datetime
 
 
 class BaseModel(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+    now = datetime.datetime.now()
 
     class Meta:
         abstract = True

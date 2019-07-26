@@ -3,10 +3,9 @@
 {% block title %}Login{% endblock %}
   {% block content %}
 
-<div class="container h-100 align-items-center" >
   <div class="row align-items-center">
     <div class="col" >
-      <div class="card rounded-pill shadow p-5 mt5 border-0 text-white" style="width: 35rem; margin: 0 auto; background-color: #003355; foreground-color: #FFFFFF;">
+      <div class="box">
         <div class="card-body text-center">
           <h4 class="card-title text-center display-4">Login</h4>
           <br />
@@ -14,8 +13,8 @@
             <div class="form-group">
             {% csrf_token %}
             {% bootstrap_form form %}
-              <a href="{% url 'password_reset' %}" class="btn btn-default d-block text-info">Forgot Password </a>
-              <div class="d-inline">
+              <a href="{% url 'password_reset' %}" class="btn btn-default d-block text-info" id="#">Forgot Password </a>
+              <div class="d-inline text-white">
               New Here ?
               <a href="{% url 'signup' %}" class="btn btn-default navbar-btn text-info"><h6 class="display-6 text-info ">Register</h6></a>
                 </div>
@@ -31,7 +30,6 @@
       </div>
     </div>
 
-</div>
 
 
     {% endblock %}

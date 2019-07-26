@@ -10,6 +10,7 @@ class PostAdmin(admin.ModelAdmin):
         "modified_date",
         "is_published",
         "creator",
+        "now",
     )
 
 
