@@ -2,3 +2,4 @@ venv/
 functions/
 __pycache__/
 *.pyc
+media/
