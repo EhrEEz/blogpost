@@ -48,7 +48,7 @@ class BlogListView(ListView):
 class CreatePost(LoginRequiredMixin, CreateView):
     template_name = "post_new.html"
     model = Post
-    fields = ("title", "description", "image", "total_comments", "type", "is_published")
+    fields = ("title", "description", "image", "type", "is_published")
 
     def form_valid(self, form):
         obj = form.save(commit=False)

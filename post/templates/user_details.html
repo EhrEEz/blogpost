@@ -1,10 +1,44 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %}{{user}} Profile{% endblock %}
   {% block content %}
   <span class="text-center bg-dark">
     <h3 class="text-white">User Profile</h3>
   </span>
   <p>
-     {{username}}
+     {{user}}
     </p>
+
+    <div class="wrapper">
+
+    {% for obj in object_list %}
+      {% if obj.creator = user %}
+        <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
+            <div class="cd-hd">
+              <h5>{{obj.title}}</h5>
+            </div>
+            <div class="cd-im">
+            {% if obj.image %}
+            <img src="{{obj.image.url}}">
+            {% endif %}
+            </div>
+            <div class="cd-bd">
+              <div class="desc_box">
+                <p>
+                  {{obj.description|truncatechars:150}}
+                </p>
+
+                </div>
+            </div>
+            <div class="cd-ft">
+            <p  id="list_date">
+<br />
+              <small class="text-muted">{{obj.created_date|naturaltime}}</small>
+              </p>
+            </div>
+          </div>
+      {% endif %}
+    {% endfor %}
+
+      </div>
     {% endblock %}

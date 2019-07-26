@@ -3,23 +3,26 @@
   {% block content %}
   <br />
   <br />
-  <div class="card" style="width: 70rem; margin: 0 auto;">
+  <div class="box" style="width: 70rem;">
     {% if obj.img %}<img src="{{obj.image}}" class="card-img-top" alt="...">
   {% endif %}
-    <div class="card-body">
+    <div class="text-white">
         <h1 class="display-4">{{object.title}}</h1>
-      <p class="lead">{{object.description}}</p>
-      <ul class="list-group list-group-flush">
-      <li class="list-group-item text-right">{{object.creator}}<br /><small class="text-muted">Published on: {{object.created_date}}</small></li>
-      <li class="list-group-item text-right">
+        <p class="lead text-muted">Description:</p>
+        <div class="cd-bd" id="detail_desc">
+          <p class="lead">
+            {{object.description}}
+            </p>
+        </div>
+        <div  id="detail_date">
+          {{object.creator}}<br /><small class="text-muted">Published on: {{object.created_date}}</small>
+          </div>
 
-        </li>
-    </ul>
 
     </div>
-
+    {% if user == object.creator %}
+  <a class="btn btn-outline-primary mt-3 mb-1 btn-block " href="{% url 'post_edit' object.pk %}" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
+  {% endif %}
   </div>
-  {% if user == object.creator %}
-<a class="btn btn-outline-primary mt-3 mb-1 btn-block " href="{% url 'post_edit' object.pk %}" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
-{% endif %}
+
     {% endblock %}

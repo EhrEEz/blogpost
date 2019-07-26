@@ -7,8 +7,8 @@
 
 {% if user.is_authenticated %}
 
-<div class=" text-right">
-  <a class="btn btn-info  mb-2" href="{% url 'post_new' %}"> New post </a>
+<div class="text-right" id="down">
+  <a class="addbu" href="{% url 'post_new' %}"> New post </a>
 </div>
 
 {% endif %}
@@ -19,25 +19,27 @@
 {% for obj in object_list %}
 
     <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
-        <div class="cd-hd">
-          <h5>{{obj.title}}</h5>
-          <p>
-            {{creator}}
-            </p>
-          <small class="text-muted">{{obj.created_date|naturaltime}}</small>
-        </div>
-        <div class="cd-im">
+      <div class="cd-im">
         {% if obj.image %}
         <img src="{{obj.image.url}}">
         {% endif %}
+      </div>
+        <div class="cd-hd">
+          <h5>{{obj.title}}</h5>
         </div>
         <div class="cd-bd">
-          <p>
-            {{obj.description|truncatechars:150}}
+          <div class="desc_box">
+            <p>
+              {{obj.description|truncatechars:150}}
             </p>
+
+            </div>
         </div>
         <div class="cd-ft">
-        Read More
+        <p  id="list_date">
+          {{obj.creator|title}}<br />
+          <small class="text-muted">{{obj.created_date|naturaltime}}</small>
+          </p>
         </div>
       </div>
 
