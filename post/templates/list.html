@@ -1,17 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load humanize %}
 {% block title %}Blogs{% endblock %}
+{% block decor %}
+<div class="row">
+  <div class="col" id="nm">
+<div class="welcome" style="background: url('{% static '/images/sZey8cPbJqg.jpg' %}');">
+  <h1 class="display-1">BlogPost</h1>
+  <p class="lead">
+    By Ares Shrestha
+    </p>
+    {% if user.is_authenticated %}
 
+    <div id="down">
+      <a class="addbu" id="butt2"href="{% url 'post_new' %}"> New post </a>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+    </div>
+{% endblock decor %}
 {% block content %}
 
 
-{% if user.is_authenticated %}
 
-<div class="text-right" id="down">
-  <a class="addbu" href="{% url 'post_new' %}"> New post </a>
-</div>
 
-{% endif %}
 
 
 <div class="wrapper">
@@ -19,13 +33,13 @@
 {% for obj in object_list %}
 
     <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
-      <div class="cd-im">
+      <div class="cd-im" >
         {% if obj.image %}
-        <img src="{{obj.image.url}}">
+        <img src="{{obj.image.url}}" id="myImg" alt="Snow">
         {% endif %}
       </div>
         <div class="cd-hd">
-          <h5>{{obj.title}}</h5>
+          <h5>{{obj.title|title}}</h5>
         </div>
         <div class="cd-bd">
           <div class="desc_box">

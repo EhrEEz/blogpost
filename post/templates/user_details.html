@@ -1,44 +1,79 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block title %}{{user}} Profile{% endblock %}
-  {% block content %}
-  <span class="text-center bg-dark">
-    <h3 class="text-white">User Profile</h3>
-  </span>
-  <p>
-     {{user}}
-    </p>
 
-    <div class="wrapper">
+{% block content %}
 
-    {% for obj in object_list %}
-      {% if obj.creator == user %}
-        <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
-            <div class="cd-hd">
-              <h5>{{obj.title}}</h5>
+
+
+<div class="box" id="box2" style="width: 70rem;">
+  <div class="text-white">
+      <h1 class="display-4">{{user|upper}}</h1>
+      <p class="lead text-muted">Email: {{user.email}}</p>
+      <div class="cd-bd" id="detail_desc">
+        <div class="user_desc">
+        <div class="left">
+           <h5>First Name:</h5>
+          </div><div class="right">
+             <p class="lead">{{user.first_name}}</p>
             </div>
-            <div class="cd-im">
-            {% if obj.image %}
-            <img src="{{obj.image.url}}">
-            {% endif %}
-            </div>
-            <div class="cd-bd">
-              <div class="desc_box">
-                <p>
-                  {{obj.description|truncatechars:150}}
-                </p>
-
+            <div class="left">
+               <h5>Last Name:</h5>
+              </div><div class="right">
+                <p class="lead">{{user.last_name}}<p>
+                  </p>
                 </div>
-            </div>
-            <div class="cd-ft">
-            <p  id="list_date">
-<br />
-              <small class="text-muted">{{obj.created_date|naturaltime}}</small>
-              </p>
-            </div>
+                <div class="left">
+                   <h5>Email:</h5>
+                  </div><div class="right">
+                     <p class="lead">{{user.email}}</p>
+                    </div>
           </div>
-      {% endif %}
-    {% endfor %}
 
+        </div>
+</div>
+</div>
+
+<hr class="my-4" id="line_jumbo" />
+<h1 id="hei">Your Posts</h1>
+{% if user.is_authenticated %}
+
+<div class="text-right" id="down">
+  <a class="addbu" id="butt2" href="{% url 'post_new' %}"> New post </a>
+</div>
+
+{% endif %}
+<br />
+<div class="wrapper">
+
+{% for obj in object_list %}
+  {% if obj.creator == user %}
+    <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
+      <div class="cd-im">
+        {% if obj.image %}
+        <img src="{{obj.image.url}}">
+        {% endif %}
       </div>
-    {% endblock %}
+        <div class="cd-hd">
+          <h5>{{obj.title}}</h5>
+        </div>
+        <div class="cd-bd">
+          <div class="desc_box">
+            <p>
+              {{obj.description|truncatechars:150}}
+            </p>
+
+            </div>
+        </div>
+        <div class="cd-ft">
+        <p  id="list_date">
+          <br />
+          <small class="text-muted">{{obj.created_date|naturaltime}}</small>
+          </p>
+        </div>
+      </div>
+  {% endif %}
+{% endfor %}
+
+  </div>
+{% endblock content %}

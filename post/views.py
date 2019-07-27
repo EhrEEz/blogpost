@@ -23,6 +23,7 @@ from django.http import HttpResponseRedirect, Http404
 
 # from .forms import PostForm
 from .models import Post
+from .forms import RegisterUser
 
 # from .forms import RegistrationForm
 class HomePageView(TemplateView):
@@ -62,16 +63,17 @@ class CreatePost(LoginRequiredMixin, CreateView):
 
 
 class PostDetail(DetailView):
-    model = Post
     template_name = "details.html"
+    model = Post
 
 
-class UserDetail(TemplateView):
+class UserDetail(ListView):
+    model = Post
     template_name = "user_details.html"
 
 
 class SignUpView(CreateView):
-    form_class = UserCreationForm
+    form_class = RegisterUser
     model = User
     template_name = "signup.html"
 

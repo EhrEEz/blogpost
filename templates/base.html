@@ -1,4 +1,5 @@
-{% load bootstrap4 static %}
+{% load bootstrap4 %}
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -16,48 +17,54 @@
 
 <body>
 
-        <div class="row">
-            <div class="col md-12">
-              <header>
-                <nav class="navbar navbar-expand-xl navbar-dark mb-3 fixed-top" id="grad1">
-                  <a class="navbar-brand" href="{% url 'home' %}">BlogPost</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+    <div class="row">
+        <div class="col md-12">
+          <header>
+            <nav class="navbar navbar-expand-xl navbar-light fixed-top" id="grad1">
+              <a class="navbar-brand" href="{% url 'home' %}">BlogPost</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active" >
-                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'list' %}">Blogs</a>
-                      </li>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active" >
+                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list' %}">Blogs</a>
+                  </li>
 
-                    </ul>
-                    <!-- <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form> -->
+                </ul>
+                <!-- <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> -->
 
 
-{% if not user.is_authenticated %}
-<a href="{% url 'signup' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Register</h6></a>
-<a href="{% url 'login' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Login</h6></a>
-{% else %}
-<a href="{% url 'user_details' %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
-<button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModal"><h6 class="display-6">Logout</h6></button>
-{% endif %}
+  {% if not user.is_authenticated %}
+  <a href="{% url 'signup' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Register</h6></a>
+  <a href="{% url 'login' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Login</h6></a>
+  {% else %}
+  <a href="{% url 'user_details' %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
+  <button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModalCenter"><h6 class="display-6">Logout</h6></button>
+  {% endif %}
 
-                  </div>
-                </nav>
-              </header>
-</div>
-</div>
-    {% bootstrap_messages %}
+              </div>
+            </nav>
+          </header>
+  </div>
+  </div>
+
+
+
+  {% bootstrap_messages %}
+
     <br />
 {% block jumbotron %}
   {% endblock %}
+  {% block decor %}
+  {% endblock decor %}
 <div class="container-fluid">
 
   {% block content %}
@@ -65,8 +72,9 @@
   {% endblock %}
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
@@ -88,7 +96,6 @@
 
 
 
-
   </div>
 
 
@@ -100,6 +107,7 @@
   <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/momment.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 
 </body>
 
