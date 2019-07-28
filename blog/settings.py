@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "bootstrap4",
     "post",
     "moment",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+CKEDITOR_CONFIGS = {
+    "default": {"toolbar": "full", "height": "550px", "width": "1200px"}
+}
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -122,6 +127,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "assets")

@@ -3,14 +3,16 @@
   {% block content %}
   <br />
   <br />
-  <div class="box" id="box3" style="margin-top:5rem;" >
-    {% if object.image %}<a href="{{object.image.url}}"><img src="{{object.image.url}}" id="myImg" alt="gardd" style="width:100%;"></a>
+  <div class="box" id="box3" style="width:100%;margin-top:5rem;" >
+    {% if object.image %}<a href="{{object.image.url}}"><img src="{{object.image.url}}" id="myImg2" alt="gardd" style="  object-fit: cover;
+      object-position:-20% 20%;
+      width:100%;
+      height: 500px;"></a>
     {% endif %}
-    <div class="text-white">
-        <h1 class="display-4">{{object.title}}</h1>
-        <p class="lead text-muted">Description:</p>
+    <div class="text-black">
+        <h1 class="display-4 text-left mx-4">{{object.title}}</h1>
         <div class="cd-bd" id="detail_desc">
-          <p class="lead">
+          <p>
             {{object.description}}
             </p>
             </div>
@@ -24,7 +26,7 @@
 
     </div>
     {% if user == object.creator %}
-  <a class="addbu " href="{% url 'post_edit' object.pk %}" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
+  <a class="addbu" href="{% url 'post_edit' object.pk %}" role="button " data-toggle="tooltip"  data-placement="right" title="Edit Post">Edit</a>
   {% endif %}
   </div>
 

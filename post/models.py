@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 import datetime
 
 
@@ -16,7 +17,7 @@ class BaseModel(models.Model):
 class Post(BaseModel):
     TYPE_CHOICES = (("private", "Private"), ("public", "Public"))
     title = models.CharField(max_length=200, verbose_name="Post Title")
-    description = models.TextField(help_text="Description")
+    description = RichTextUploadingField(config_name="default")
     creator = models.ForeignKey(User, on_delete=models.PROTECT)
     image = models.ImageField(upload_to="post/images", null=True, blank=True)
     total_comments = models.IntegerField(default=0)

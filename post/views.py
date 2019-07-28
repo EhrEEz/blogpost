@@ -21,6 +21,9 @@ from django.views.generic import (
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect, Http404
 
+from django import forms
+from ckeditor.widgets import CKEditorWidget
+
 # from .forms import PostForm
 from .models import Post
 from .forms import RegisterUser
@@ -54,6 +57,7 @@ class BlogListView(ListView):
 class CreatePost(LoginRequiredMixin, CreateView):
     template_name = "post_new.html"
     model = Post
+    description = forms.CharField(widget=CKEditorWidget())
     fields = ("title", "description", "image", "type", "is_published")
 
     def form_valid(self, form):
