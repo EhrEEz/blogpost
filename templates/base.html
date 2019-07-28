@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col md-12">
           <header>
-            <nav class="navbar navbar-expand-xl navbar-light fixed-top" id="grad1">
+            <nav class="navbar navbar-expand-xl navbar-dark fixed-top" id="grad1">
               <a class="navbar-brand" href="{% url 'home' %}">BlogPost</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,11 +28,11 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item {% block home_active %}{% endblock home_active %}" >
-                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  <li class="nav-item" >
+                    <a class="nav-link {% block home_active %}{% endblock home_active %}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item {% block list_active %}{% endblock list_active %}">
-                    <a class="nav-link" href="{% url 'list' %}">Blogs</a>
+                  <li class="nav-item">
+                    <a class="nav-link {% block list_active %}{% endblock list_active %}" href="{% url 'list' %}">Blogs</a>
                   </li>
 
                 </ul>
@@ -46,8 +46,8 @@
   <a href="{% url 'signup' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Register</h6></a>
   <a href="{% url 'login' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Login</h6></a>
   {% else %}
-  <a href="{% url 'user_details' %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
-  <button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModalCenter"><h6 class="display-6">Logout</h6></button>
+  <a href="{% url 'user_details' %}" class="nav-link {% block user_details_active %}{% endblock user_details_active %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
+  <button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModalCenter" id="nav_rt"><h6 class="display-6" id="nav_rt">Logout</h6></button>
   {% endif %}
 
               </div>
@@ -56,13 +56,11 @@
   </div>
   </div>
 
-
+  {% block decor %}
+  {% endblock decor %}
 
   {% bootstrap_messages %}
 
-    <br />
-  {% block decor %}
-  {% endblock decor %}
 <div class="container-fluid" id="content">
 
   {% block content %}
@@ -99,8 +97,8 @@
   <script src="{% static 'js/masonry.pkgd.js' %}"></script>
   <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/momment.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/nav.js' %}"></script>
 
 
 </body>

@@ -29,7 +29,7 @@ Home{% endblock title %}
       {% for obj in object_list|slice:":5" %}
       <div class="carousel-item{% if forloop.first %} active {% endif %}">
 
-        <img src="{{obj.image.url}}" class="d-block w-100" alt="x" style="  object-fit: cover;object-position: -20% 20%;  width: 100%;height: calc(100vh - 3.5rem);">
+        <img src="{{obj.image.url}}" class="d-block w-100" alt="x" style="  object-fit: cover;object-position: -20% 20%;  width: 100%;height:100vh;">
         <div class="carousel-caption d-none d-md-block" style="z-index:1000;">
           <h5>{{obj.title}}</h5>
           <p>{{obj.description|truncatechars:50}}</p>

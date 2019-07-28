@@ -7,7 +7,6 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow-x:hidden;
-  margin-top: 2rem;
   -webkit-font-smoothing: antialiased;
 }
 .box{
@@ -85,11 +84,15 @@ body{
   color:white;
 }
 #grad1 {
-  background: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.0);
+  transition: all 0.5s;
   top:0px;
   width:100%;
 }
-
+.nav-link
+{
+  color: rgba(255, 255, 255, 0.6);
+}
 
 
 #jumbo{
@@ -100,12 +103,20 @@ body{
 }
 
 
-a, u {
-  color: #2ecc71;
+a, u, h6{
   text-decoration: none !important;
+  color:rgba(255,255,255,0.6);
+  transition: all 0.5s;
+}
+a:hover, u:hover, h6:hover{
+  text-decoration: none !important;
+  color:rgba(255,255,255,0.8);
 }
 
 
+.nav-link.active{
+  color: #EB7C79;
+}
 /* grid */
 
 .wrapper {
@@ -248,10 +259,7 @@ a, u {
   padding-right: 50px;
 
 }
-#nav-rt{
-  color: #2ecc71;
 
-}
 .col {
   height:inherits;
 }
@@ -361,6 +369,10 @@ hr {
 /* Style the Image Used to Trigger the Modal */
 #myImg {
   cursor: pointer;
+  width:100%;
+  height:auto;
+  object-fit: cover;
+  object-position:-20% 20%;
   transition: 0.3s;
   border-radius: 18px;
 }
@@ -439,11 +451,13 @@ hr {
   text-align: center;
   color:white;
   width:100%;
-  height:500px;
-  padding-top:9rem;
+  height:100vh;
+  padding-top:10rem;
   padding-bottom:8rem;
   margin-bottom: 2rem;
   min-width: 0%;
+  z-index:1000;
+  height: 100vh;
 }
 .bd-example{
   positon:relative;
@@ -452,14 +466,26 @@ hr {
   text-align: center;
   color:white;
   width:100%;
-  height:calc(100vh - 3.5rem);
+  height:100vh;
   padding-bottom:8rem;
   min-width: 0%;
   z-index: 1000;
   position:absolute;
-  font-weight: bolder;
   background: rgba(14,14,14,0.7);
 }
 .hero h1{
-  padding-top: 9rem;
+  padding-top: 10rem;
+}
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #EB7C79;
+}
+.navbar-dark .navbar-brand {
+  color: rgba(255,255,255,0.7);
+}
+
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+  color: rgba(255,255,255,0.8);
 }

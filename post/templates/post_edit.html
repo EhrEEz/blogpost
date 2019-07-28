@@ -3,7 +3,7 @@
 {% block title %}Edit {{object.title}}{% endblock %}
   {% block content %}
   <br />
-  <div class="card px-3" id="new_post">
+  <div class="card px-3" id="new_post" style="margin-top:5rem;">
     <h2 class="display-4 mb-5 mt-3">Edit post</h2>
     <form method="POST" class="post-form mb-3" novalidate>{% csrf_token %}
         {% bootstrap_form form %}

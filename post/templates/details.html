@@ -3,8 +3,9 @@
   {% block content %}
   <br />
   <br />
-  <div class="box" id="box2" style="width: 70rem;">
-
+  <div class="box" id="box3" style="margin-top:5rem;" >
+    {% if object.image %}<a href="{{object.image.url}}"><img src="{{object.image.url}}" id="myImg" alt="gardd" style="width:100%;"></a>
+    {% endif %}
     <div class="text-white">
         <h1 class="display-4">{{object.title}}</h1>
         <p class="lead text-muted">Description:</p>
@@ -14,8 +15,7 @@
             </p>
             </div>
 
-            {% if object.image %}<a href="{{object.image.url}}"><img src="{{object.image.url}}" id="myImg" alt="gardd" style="width:100%;max-width:300px"></a>
-          {% endif %}
+
 
         <div  id="detail_date">
           {{object.creator}}<br /><small class="text-muted">Published on: {{object.created_date}}</small>

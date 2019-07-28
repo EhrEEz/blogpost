@@ -6,7 +6,7 @@
 
 
 
-<div class="box" id="box2" style="width: 70rem;">
+<div class="box" id="box2" style="width: 70rem; margin-top:5rem;">
   <div class="text-white">
       <h1 class="display-4">{{user|upper}}</h1>
       <p class="lead text-muted">Email: {{user.email}}</p>
@@ -78,3 +78,6 @@
   </div>
   </div>
 {% endblock content %}
+{% block user_details_active %}
+active
+{% endblock user_details_active %}

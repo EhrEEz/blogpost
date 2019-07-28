@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% load humanize %}
+
 {% block title %}Blogs{% endblock %}
+
 {% block decor %}
-<div class="row" style="min-width: 100%;">
-  <div class="col" id="nm">
+<div class="bd-example">
 <div class="welcome" style="background: url('{% static '/images/sZey8cPbJqg.jpg' %}');">
   <h1 class="display-1">BlogPost</h1>
   <p class="lead">
-    By Ares Shrestha
+    Blogs
     </p>
     {% if user.is_authenticated %}
 
@@ -18,8 +20,7 @@
 
     {% endif %}
   </div>
-</div>
-    </div>
+  </div>
 {% endblock decor %}
 {% block content %}
 
@@ -28,7 +29,7 @@
 
 
 
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
 
 {% for obj in object_list %}
 
