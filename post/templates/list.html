@@ -3,7 +3,7 @@
 {% load humanize %}
 {% block title %}Blogs{% endblock %}
 {% block decor %}
-<div class="row">
+<div class="row" style="min-width: 100%;">
   <div class="col" id="nm">
 <div class="welcome" style="background: url('{% static '/images/sZey8cPbJqg.jpg' %}');">
   <h1 class="display-1">BlogPost</h1>
@@ -61,3 +61,7 @@
 
   </div>
 {% endblock content %}
+
+{% block list_active %}
+active
+{% endblock list_active %}

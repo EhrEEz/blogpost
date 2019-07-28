@@ -10,7 +10,7 @@
   <div class="text-white">
       <h1 class="display-4">{{user|upper}}</h1>
       <p class="lead text-muted">Email: {{user.email}}</p>
-      <div class="cd-bd" id="detail_desc">
+      <div>
         <div class="user_desc">
         <div class="left">
            <h5>First Name:</h5>
@@ -33,8 +33,9 @@
         </div>
 </div>
 </div>
+<div id="box_fixed">
 
-<hr class="my-4" id="line_jumbo" />
+
 <h1 id="hei">Your Posts</h1>
 {% if user.is_authenticated %}
 
@@ -74,6 +75,6 @@
       </div>
   {% endif %}
 {% endfor %}
-
+  </div>
   </div>
 {% endblock content %}

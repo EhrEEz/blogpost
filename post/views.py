@@ -26,9 +26,14 @@ from .models import Post
 from .forms import RegisterUser
 
 # from .forms import RegistrationForm
-class HomePageView(TemplateView):
+class HomePageView(ListView):
     template_name = "home.html"
     model = Post
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(image__isnull=False).exclude(image="")
+        return queryset
 
 
 class TableView(ListView):

@@ -8,6 +8,7 @@ body{
   background-attachment: fixed;
   overflow-x:hidden;
   margin-top: 2rem;
+  -webkit-font-smoothing: antialiased;
 }
 .box{
   width:500px;
@@ -42,7 +43,7 @@ body{
   width: 280px;
   border-color: #2ecc71;
 }
-.box input[type = "submit"], #button, .addbu, #new_post button{
+.box input[type = "submit"], #button, .addbu, #new_post button, #butt2, #butt2_alt{
   border:0;
   background: none;
   margin: 20px auto;
@@ -73,6 +74,16 @@ body{
   color:white;
   background: rgba(255,255,255,.3);
 }
+#butt2_alt{
+  background: rgba(255,255,255,.3);
+  border-color: rgba(0,100,255,.4);
+  padding:8px 40px;
+  border: 2px solid #FFFFFF;
+}
+#butt2_alt:hover{
+  background: rgba(255,97,127,.3);
+  color:white;
+}
 #grad1 {
   background: rgba(255,255,255,.9);
   top:0px;
@@ -85,7 +96,7 @@ body{
   background: rgba(14,14,14,.6);
 }
 #line_jumbo{
-  background-color: #2ecc71;
+  background: white;
 }
 
 
@@ -98,10 +109,12 @@ a, u {
 /* grid */
 
 .wrapper {
-  width:1400px;
-  columns:3;
+  width:100%;
+  columns:4;
   margin:10px auto;
   column-gap:15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .wrapper .item {
@@ -110,23 +123,53 @@ a, u {
   overflow:hidden;
   break-inside: avoid;
   border-radius:18px;
+  min-width: 100px;
 }
 
 .wrapper .item img{
   max-width:100%;
 }
 
-@media (max-width: 1400px)
+@media (max-width: 1200px)
 {
-  .container{
+  .wrapper{
     columns:3;
     width: calc(100% - 40px);
     box-sizing: border-box;
-    padding:20px 20px 20px 0;
+    padding:20px 20px 20px 20px;
   }
 
 }
+@media (min-width: 4000px)
+{
+  .wrapper{
+    columns:6;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    padding:20px 20px 20px 20px;
+  }
 
+}
+@media (max-width: 876px)
+{
+  .wrapper{
+    columns:2;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    padding:20px 20px 20px 20px;
+  }
+
+}
+@media (max-width: 600px)
+{
+  .wrapper{
+    columns:1;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    padding:20px 20px 20px 20px;
+  }
+
+}
 /* card display */
 .cd-hd{
   background: rgba(14,14,14,.5);
@@ -277,6 +320,21 @@ a, u {
   border:none;
 
 }
+#box_fixed{
+  width:auto;
+  height:auto;
+  padding:50px;
+  background: rgba(14,14,14,.5);
+  text-align: center;
+  border-radius: 10rem;
+  margin: 0 auto;
+  margin-top:2rem;
+  border: 2px solid #2ecc71;
+  margin-bottom: 8rem;
+  border:none;
+}
+
+
 hr {
   background-color: color:#2ecc71;
 }
@@ -385,4 +443,23 @@ hr {
   padding-top:9rem;
   padding-bottom:8rem;
   margin-bottom: 2rem;
+  min-width: 0%;
+}
+.bd-example{
+  positon:relative;
+}
+.hero{
+  text-align: center;
+  color:white;
+  width:100%;
+  height:calc(100vh - 3.5rem);
+  padding-bottom:8rem;
+  min-width: 0%;
+  z-index: 1000;
+  position:absolute;
+  font-weight: bolder;
+  background: rgba(14,14,14,0.7);
+}
+.hero h1{
+  padding-top: 9rem;
 }
