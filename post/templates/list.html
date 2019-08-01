@@ -7,7 +7,11 @@
 
 {% block decor %}
 <div class="bd-example">
+
 <div class="welcome" style="background: url('{% static '/images/sZey8cPbJqg.jpg' %}');">
+  <div class="bg-shade">
+    <div class="hero-text">
+
   <h1 class="display-1">BlogPost</h1>
   <p class="lead">
     Blogs
@@ -17,9 +21,16 @@
     <div id="down">
       <a class="addbu" id="butt2"href="{% url 'post_new' %}"> New post </a>
     </div>
+    {% else %}
+    <div id="down">
+
+      <a class="addbu" id="butt2"href="{% url 'login' %}"> Login </a>
+      </div>
 
     {% endif %}
   </div>
+  </div>
+</div>
   </div>
 {% endblock decor %}
 {% block content %}
@@ -42,18 +53,26 @@
         <div class="cd-bd">
           <div class="desc_box">
             <p>
-              {{obj.description|truncatechars:200}}
-            </p>
+              {{obj.description|safe|truncatewords:50}}
+
+              </p>
+
 
             </div>
         </div>
         <div class="cd-ft">
+          <a href="#"><i class="fas fa-thumbs-up"></i></a>
+          <a href="#"><i class="fas fa-comment"></i></a>
         <p  id="list_date">
           {{obj.creator|title}}<br />
           <small class="text-muted">{{obj.created_date|naturaltime}}</small>
           </p>
         </div>
       </div>
+{% empty %}
+<p>
+  Oops! No Blogs Like That!
+  </p>
 
 {% endfor %}
 
@@ -63,3 +82,17 @@
 {% block list_active %}
 active
 {% endblock list_active %}
+
+
+
+
+
+
+{% block filter_box%}
+<form method="GET">
+<div class="search-container">
+  <input type="text" placeholder="{{q}}" name="q" id="search_input">
+   <a class="search-button" href="#"><i class="fas fa-search"></i></a>
+  </div>
+  </form>
+{%endblock filter_box%}

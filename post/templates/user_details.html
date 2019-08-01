@@ -48,7 +48,6 @@
 <div class="wrapper">
 
 {% for obj in object_list %}
-  {% if obj.creator == user %}
     <div class="item" onclick="location.href='{% url 'detail' obj.pk %}';"style=cursor:pointer;">
       <div class="cd-im">
         {% if obj.image %}
@@ -73,7 +72,6 @@
           </p>
         </div>
       </div>
-  {% endif %}
 {% endfor %}
   </div>
   </div>

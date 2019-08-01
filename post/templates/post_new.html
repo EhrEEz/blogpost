@@ -5,9 +5,10 @@
   <br />
   <div class="card px-3" id="new_post" style="margin-top:5rem;">
     <h2 class="display-4 mb-5 mt-3">New post</h2>
-    <form method="POST" class="post-form mb-3" enctype="multipart/form-data" novalidate>{% csrf_token %}
+    <form method="POST" class="post-form mb-3" enctype="multipart/form-data" novalidate id="form">{% csrf_token %}
       {{form.media}}
         {% bootstrap_form form %}
+
         <button type="submit" class="save btn btn-outline-primary rounded-pill">Save</button>
     </form>
 

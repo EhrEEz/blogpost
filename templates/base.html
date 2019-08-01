@@ -10,55 +10,60 @@
 
   <!-- css -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <script src="https://kit.fontawesome.com/d80a1fa2f0.js"></script>
   <link rel="stylesheet" href="{% static 'css/box.css' %}" />
 
   <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
-
-    <div class="row">
-        <div class="col md-12">
-          <header>
-            <nav class="navbar navbar-expand-xl navbar-dark fixed-top" id="grad1">
-              <a class="navbar-brand" href="{% url 'home' %}">BlogPost</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item" >
-                    <a class="nav-link {% block home_active %}{% endblock home_active %}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link {% block list_active %}{% endblock list_active %}" href="{% url 'list' %}">Blogs</a>
-                  </li>
-
-                </ul>
-                <!-- <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> -->
-
-
-  {% if not user.is_authenticated %}
-  <a href="{% url 'signup' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Register</h6></a>
-  <a href="{% url 'login' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Login</h6></a>
-  {% else %}
-  <a href="{% url 'user_details' %}" class="nav-link {% block user_details_active %}{% endblock user_details_active %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
-  <button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModalCenter" id="nav_rt"><h6 class="display-6" id="nav_rt">Logout</h6></button>
-  {% endif %}
-
-              </div>
-            </nav>
-          </header>
-  </div>
-  </div>
-
-
+<header>
   {% block decor %}
   {% endblock decor %}
+
+
+  <nav class="navbar navbar-expand-xl navbar-dark" id="grad1" style="width:100%;">
+    <a class="navbar-brand" href="{% url 'home' %}">BlogPost</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" >
+          <a class="nav-link {% block home_active %}{% endblock home_active %}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block list_active %}{% endblock list_active %}" href="{% url 'list' %}">Blogs</a>
+        </li>
+        <li>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+
+
+
+      {% block filter_box %}
+      {% endblock filter_box %}
+{% if not user.is_authenticated %}
+<a href="{% url 'signup' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Register</h6></a>
+<a href="{% url 'login' %}" class="btn btn-default navbar-btn" id="nav_rt"><h6 class="display-6">Login</h6></a>
+{% else %}
+<a href="{% url 'user_details' %}" class="nav-link {% block user_details_active %}{% endblock user_details_active %}"><h6 class="display-6" id="nav_rt">{{ user.username|title }}</h6></a>
+<button class="btn btn-default navbar-btn"  data-toggle="modal" data-target="#exampleModalCenter" id="nav_rt"><h6 class="display-6" id="nav_rt">Logout</h6></button>
+{% endif %}
+
+    </div>
+  </nav>
+
+</header>
+
+
+
+
 
   {% bootstrap_messages %}
 

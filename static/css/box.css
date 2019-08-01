@@ -1,4 +1,8 @@
 {% load staticfiles %}
+
+::placeholder{
+  color: #FFFFFF;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -59,6 +63,9 @@ body{
   cursor: pointer;
   label: none;
 }
+#butt2_alt{
+  margin-bottom:none;
+}
 .addbu{
   background: rgba(14,14,14,0.8);
   border: none;
@@ -90,12 +97,8 @@ body{
   background: rgba(255,97,127,.3);
   color:white;
 }
-#grad1 {
-  background: rgba(255,255,255,.0);
-  transition: all 0.5s;
-  top:0px;
-  width:100%;
-}
+
+
 .nav-link
 {
   color: rgba(255, 255, 255, 0.6);
@@ -110,7 +113,7 @@ body{
 }
 
 
-a, u, h6{
+#grad1 a, #grad1 u, #grad1 h6{
   text-decoration: none !important;
   color:rgba(255,255,255,0.6);
   transition: all 0.5s;
@@ -129,6 +132,7 @@ a:hover, u:hover, h6:hover{
 .wrapper {
   width:100%;
   columns:3;
+  margin-top: 50px;
   margin:10px auto;
   column-gap:25px;
   padding-left: 20px;
@@ -158,7 +162,7 @@ a:hover, u:hover, h6:hover{
   }
 
 }
-@media (min-width: 4000px)
+@media (max-width: 4000px; min-width: 1200px;)
 {
   .wrapper{
     columns:6;
@@ -257,7 +261,6 @@ a:hover, u:hover, h6:hover{
   text-align: left;
   width:auto;
   padding: 15px;
-  margin:1rem;
   min-height:300px;
   background: rgba(255,255,255,0.4);
   color:black;
@@ -290,7 +293,7 @@ a:hover, u:hover, h6:hover{
 #new_post{
   background: rgba(14,14,14,.5);
   border-radius: 55px;
-  width:80%;
+  width:100%;
   margin: auto;
   border:none;
   padding-left: 150px;
@@ -300,7 +303,7 @@ a:hover, u:hover, h6:hover{
   color:white;
 }
 #new_post label{
-  color: white;
+  visibility:inherit;
 }
 #new_post button{
   margin:0 auto;
@@ -340,12 +343,24 @@ a:hover, u:hover, h6:hover{
   border:none;
 }
 #box3{
-  padding-left: 0px;
-  padding-right: 0px;
+padding:2rem;
   border-radius: 5rem;
-  padding-top:0rem;
+  padding-top:2rem;
   background: rgba(255,255,255,0.8);
 }
+#box4{
+  width:100%;
+  padding:50px;
+  background: rgba(255,255,255,.8);
+  text-align: center;
+  border-radius: 10rem;
+  margin: 0 auto;
+  margin-top:2rem;
+  border: 2px solid #2ecc71;
+  margin-bottom: 8rem;
+  border:none;
+}
+
 #box_fixed{
   width:auto;
   height:auto;
@@ -369,7 +384,7 @@ hr {
   text-align: center;
   margin-top: 2rem;
   color:white;
-  font-weight: boldf;
+  font-weight: bold;
 }
 
 .box img{
@@ -378,9 +393,6 @@ hr {
   border-radius: 10rem;
   margin-top:15px;
 }
-
-
-
 
 
 
@@ -477,13 +489,13 @@ hr {
   text-align: center;
   color:white;
   width:100%;
-  height:100vh;
-  padding-top:10rem;
   padding-bottom:8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   min-width: 0%;
-  z-index:1000;
   height: 100vh;
+  position: relative;
+  background-repeat: no-repeat;
+
 }
 .bd-example{
   positon:relative;
@@ -495,7 +507,7 @@ hr {
   height:100vh;
   padding-bottom:8rem;
   min-width: 0%;
-  z-index: 1000;
+  z-index: 998;
   position:absolute;
   background: rgba(14,14,14,0.7);
 }
@@ -514,4 +526,87 @@ hr {
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: rgba(255,255,255,0.8);
+}
+
+#nav_rt{color: rgba(255,255,255,0.7);}
+
+.nav-link, #nav_rt h6, .navbar-brand{
+  color: rgba(255,255,255,.7);
+}
+
+.nav-link.active{
+  color: #EB7C79;
+}
+.bg-shade{
+  background-color: rgba(14,14,14,0.6);
+  z-index:1000;
+  position: absolute;
+  height:100vh;
+  width:100%;
+  margin-top: none;
+}
+.hero-text{
+  padding-top:10rem;
+}
+.search-container{
+  background:rgba(0,0,0,.5);
+  height:50px;
+  width:250px;
+  padding:10px;
+  border-color: #ccfe28;
+  border: 2px;
+  border-radius: 50px;
+
+}
+#search_input{
+  outline: none;
+  border: 2px;
+  padding-left: 15px;
+  height:30px;
+  background: none;
+  color:rgba(255,255,255,0.7);
+}
+.search-container a{
+  background:None;
+  text-decoration:none;
+  border-radius: 50%;
+  width:30px;
+  height:30px;
+}
+i{
+
+}
+.search-button{
+  background: none;
+}
+header{
+  position: relative;
+}
+#grad1 {
+  background: rgba(255,255,255,.0);
+  transition: all 0.5s;
+  width:100%;
+  height:60px;
+  background: rgba(0,0,0,0);
+  z-index: 1000;
+  bottom:0;
+  position: absolute;
+  }
+.carousel-caption{
+  margin-bottom:0;
+}
+.comment{
+  width:100%;
+}
+.comment textarea{
+  width:100%;
+  border-radius:1rem;
+  border:none;
+  height:5rem;
+  background: rgba(255,255,255,0.5);
+}
+.bubble{
+  background: rgba(255,255,255,0.5);
+  padding: 5px;
+  border-radius: 10px;
 }

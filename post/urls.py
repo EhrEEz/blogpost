@@ -11,6 +11,8 @@ from .views import (
     UserDetail,
     HomePageView,
     EditPost,
+    CommentDelete,
+    PostDelete,
 )
 from . import views
 
@@ -26,4 +28,6 @@ urlpatterns = [
     path("post/<int:pk>/edit/", EditPost.as_view(), name="post_edit"),
     path("signup/", SignUpView.as_view(), name="signup"),
     path("user/userprofile/", UserDetail.as_view(), name="user_details"),
+    path("comment/<int:pk>/delete/", CommentDelete.as_view(), name="comment_delete"),
+    path("post/<int:pk>/delete/", PostDelete.as_view(), name="post_delete"),
 ]
